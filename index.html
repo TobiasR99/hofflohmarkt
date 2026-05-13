@@ -35,6 +35,19 @@
     #map { flex: 1; min-height: 52vh; width: 100%; z-index: 1; }
     .legend { background: var(--white); padding: 0.7rem 0.8rem 0.6rem; border-top: 4px solid var(--blue); }
     .legend h2 { font-family: 'Fredoka One', cursive; font-size: 1.05rem; color: var(--blue); margin-bottom: 0.5rem; }
+
+    /* Legende Symbole */
+    .map-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.7rem;
+      padding: 0.5rem 0.7rem;
+      background: var(--bg);
+      border-radius: 10px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; font-weight: 700; }
+
     .standort-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.35rem; }
     .standort-card { display: flex; align-items: center; gap: 0.5rem; border-radius: 8px; padding: 0.35rem 0.6rem; cursor: pointer; transition: transform 0.18s, box-shadow 0.18s; border: 2px solid transparent; }
     .standort-card:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
@@ -44,6 +57,7 @@
     .standort-card:nth-child(6n+4) { background: #e6f4ed; border-color: var(--green);  }
     .standort-card:nth-child(6n+5) { background: #fdf6e3; border-color: var(--yellow); }
     .standort-card:nth-child(6n+6) { background: #fce8ef; border-color: var(--pink);   }
+    .standort-card.active { box-shadow: 0 0 0 3px var(--blue); transform: translateY(-1px); }
     .standort-num { min-width: 22px; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Fredoka One', cursive; font-size: 0.75rem; color: white; flex-shrink: 0; }
     .standort-card:nth-child(6n+1) .standort-num { background: var(--red);    }
     .standort-card:nth-child(6n+2) .standort-num { background: var(--blue);   }
@@ -51,13 +65,17 @@
     .standort-card:nth-child(6n+4) .standort-num { background: var(--green);  }
     .standort-card:nth-child(6n+5) .standort-num { background: var(--yellow); color: var(--dark); }
     .standort-card:nth-child(6n+6) .standort-num { background: var(--pink);   }
-    .standort-card.active { box-shadow: 0 0 0 3px var(--blue); transform: translateY(-1px); }
     .standort-info { font-size: 0.78rem; font-weight: 700; color: var(--dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     footer { background: var(--white); text-align: center; padding: 0.5rem; font-size: 0.72rem; color: #aaa; border-top: 4px solid transparent; border-image: linear-gradient(90deg, var(--orange), var(--red), var(--pink), var(--blue), var(--green), var(--yellow)) 1; }
     .leaflet-popup-content-wrapper { border-radius: 14px; border-top: 5px solid var(--red); font-family: 'Nunito', sans-serif; }
     .leaflet-popup-content { margin: 12px 14px; }
     .popup-title { font-family: 'Fredoka One', cursive; font-size: 1rem; color: var(--blue); }
+    .popup-title.kita { color: var(--green); }
+    .popup-title.parking { color: #555; }
     .popup-addr  { font-size: 0.8rem; color: #888; margin-top: 2px; }
+    .popup-badge { display: inline-block; margin-top: 5px; font-size: 0.75rem; font-weight: 700; border-radius: 99px; padding: 2px 10px; }
+    .popup-badge.kita    { background: #e6f4ed; color: var(--green); }
+    .popup-badge.parking { background: #e8eef9; color: var(--blue);  }
   </style>
 </head>
 <body>
@@ -76,6 +94,11 @@
 
 <div class="legend">
   <h2>🛍 Alle Standorte</h2>
+  <div class="map-legend">
+    <div class="legend-item"><span style="font-size:1.1rem">🔴</span> Flohmarkt-Standort</div>
+    <div class="legend-item"><span style="font-size:1.1rem">🌼</span> Veranstalter (Kindergarten)</div>
+    <div class="legend-item"><span style="font-size:1.1rem">🅿️</span> Parkplatz</div>
+  </div>
   <div class="standort-list" id="standort-list"></div>
 </div>
 
@@ -131,6 +154,21 @@
     { "adresse": "Weinbergstrasse 5",        "lat": 49.2104763, "lng": 8.879157  }
   ];
 
+  const parkplaetze = [
+    { name: "Friedhof-Parkplatz Weiler",  adresse: "Kaiserstraße 3A, Weiler",      lat: 49.2067174, lng: 8.873426  },
+    { name: "Parkplatz Kornblumenstraße", adresse: "Kornblumenstraße 4, Weiler",    lat: 49.2053987, lng: 8.8745918 },
+    { name: "Parkplatz Küferschänke",     adresse: "Zum Hasengarten 3, Weiler",     lat: 49.2115638, lng: 8.8732222 },
+    { name: "Parkplatz Burg Steinsberg",  adresse: "Weinbergstraße, Hilsbach",      lat: 49.2148998, lng: 8.8764047 },
+    { name: "Parkplatz Hilsbach",         adresse: "Hilsbach",                      lat: 49.200334,  lng: 8.8716343 }
+  ];
+
+  const kindergarten = {
+    name: "Ev. Kindergarten Gänseblümchen",
+    adresse: "Burggrafenstraße 12, Weiler",
+    lat: 49.2089932,
+    lng: 8.8780397
+  };
+
   const colours = ['#d63b2f','#5b7ec5','#e8813a','#4a9b6f','#f0c040','#e07090'];
 
   const map = L.map('map');
@@ -139,11 +177,54 @@
     maxZoom: 19
   }).addTo(map);
 
-  const listEl  = document.getElementById('standort-list');
-  const markers = [];
-  const cards   = [];
-  let activeCard = null;
+  const allMarkers = [];
+  const listEl     = document.getElementById('standort-list');
+  let activeCard   = null;
 
+  // ---- Kindergarten-Marker ----
+  const kitaIcon = L.divIcon({
+    className: '',
+    html: `<div style="
+        background:#4a9b6f;border:3px solid white;border-radius:50%;
+        width:40px;height:40px;
+        box-shadow:0 3px 12px rgba(0,0,0,0.35);
+        display:flex;align-items:center;justify-content:center;
+        font-size:20px;line-height:1;">🌼</div>`,
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
+    popupAnchor: [0, -22]
+  });
+  const kitaMarker = L.marker([kindergarten.lat, kindergarten.lng], { icon: kitaIcon }).addTo(map);
+  kitaMarker.bindPopup(`
+    <div class="popup-title kita">🌼 ${kindergarten.name}</div>
+    <div class="popup-addr">📍 ${kindergarten.adresse}</div>
+    <div><span class="popup-badge kita">Veranstalter</span></div>`);
+  allMarkers.push(kitaMarker);
+
+  // ---- Parkplatz-Marker ----
+  const parkIcon = (name) => L.divIcon({
+    className: '',
+    html: `<div style="
+        background:#4a6fa5;border:3px solid white;border-radius:8px;
+        width:34px;height:34px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.28);
+        display:flex;align-items:center;justify-content:center;
+        font-size:16px;line-height:1;">🅿️</div>`,
+    iconSize: [34, 34],
+    iconAnchor: [17, 17],
+    popupAnchor: [0, -19]
+  });
+
+  parkplaetze.forEach(p => {
+    const m = L.marker([p.lat, p.lng], { icon: parkIcon(p.name) }).addTo(map);
+    m.bindPopup(`
+      <div class="popup-title parking">🅿️ ${p.name}</div>
+      <div class="popup-addr">📍 ${p.adresse}</div>
+      <div><span class="popup-badge parking">Kostenlos parken</span></div>`);
+    allMarkers.push(m);
+  });
+
+  // ---- Standort-Marker ----
   standorte.forEach((s, i) => {
     const num     = i + 1;
     const col     = colours[i % colours.length];
@@ -167,44 +248,29 @@
     marker.bindPopup(`
       <div class="popup-title">Standort ${num}</div>
       <div class="popup-addr">📍 ${s.adresse}</div>`);
-    markers.push(marker);
+    allMarkers.push(marker);
 
     const card = document.createElement('div');
     card.className = 'standort-card';
     card.innerHTML = `
       <div class="standort-num">${num}</div>
       <div class="standort-info">${s.adresse}</div>`;
-
     card.addEventListener('click', () => {
-      // Aktive Karte hervorheben
       if (activeCard) activeCard.classList.remove('active');
       card.classList.add('active');
       activeCard = card;
-
-      // Zur Map scrollen
       document.getElementById('map').scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      // Kurze Verzögerung damit Scroll fertig ist, dann zoomen
-      setTimeout(() => {
-        map.setView([s.lat, s.lng], 18);
-        marker.openPopup();
-      }, 400);
+      setTimeout(() => { map.setView([s.lat, s.lng], 18); marker.openPopup(); }, 400);
     });
-
     listEl.appendChild(card);
-    cards.push(card);
   });
 
-  // Beim Schließen des Popups Markierung entfernen
   map.on('popupclose', () => {
-    if (activeCard) {
-      activeCard.classList.remove('active');
-      activeCard = null;
-    }
+    if (activeCard) { activeCard.classList.remove('active'); activeCard = null; }
   });
 
-  const group = L.featureGroup(markers);
-  map.fitBounds(group.getBounds().pad(0.15));
+  const group = L.featureGroup(allMarkers);
+  map.fitBounds(group.getBounds().pad(0.12));
 </script>
 </body>
 </html>
