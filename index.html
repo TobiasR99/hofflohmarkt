@@ -20,9 +20,7 @@
       --white:  #fffffe;
       --dark:   #2a2a2a;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Nunito', sans-serif;
       background: var(--bg);
@@ -31,7 +29,6 @@
       display: flex;
       flex-direction: column;
     }
-
     header {
       background: var(--white);
       padding: 1.2rem 1rem 0.9rem;
@@ -40,18 +37,13 @@
       overflow: hidden;
       border-bottom: 4px solid var(--red);
     }
-
     header::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 8px;
-      background: linear-gradient(90deg,
-        var(--orange) 0%, var(--red) 18%,
-        var(--pink) 36%, var(--blue) 54%,
-        var(--green) 72%, var(--yellow) 100%);
+      background: linear-gradient(90deg, var(--orange) 0%, var(--red) 18%, var(--pink) 36%, var(--blue) 54%, var(--green) 72%, var(--yellow) 100%);
     }
-
     header h1 {
       font-family: 'Fredoka One', cursive;
       font-size: clamp(1.7rem, 6vw, 2.6rem);
@@ -60,12 +52,7 @@
       line-height: 1.1;
       margin-top: 0.4rem;
     }
-
-    header h1 em {
-      color: var(--red);
-      font-style: normal;
-    }
-
+    header h1 em { color: var(--red); font-style: normal; }
     .event-info {
       display: flex;
       justify-content: center;
@@ -73,7 +60,6 @@
       gap: 0.5rem;
       margin: 0.65rem 0 0.35rem;
     }
-
     .pill {
       display: inline-flex;
       align-items: center;
@@ -86,67 +72,76 @@
     .pill-red   { background: var(--red);   color: white; }
     .pill-blue  { background: var(--blue);  color: white; }
     .pill-green { background: var(--green); color: white; }
+    .organizer { font-size: 0.75rem; color: #999; margin-top: 0.3rem; }
 
-    .organizer {
-      font-size: 0.75rem;
-      color: #999;
-      margin-top: 0.3rem;
+    #loading-bar {
+      background: var(--white);
+      padding: 1.2rem;
+      text-align: center;
+      border-bottom: 2px solid #eee;
+    }
+    #loading-bar p {
+      font-family: 'Fredoka One', cursive;
+      color: var(--blue);
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+    }
+    .progress-outer {
+      background: #eee;
+      border-radius: 99px;
+      height: 12px;
+      max-width: 320px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .progress-inner {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--red), var(--blue), var(--green));
+      width: 0%;
+      transition: width 0.3s;
     }
 
-    #map {
-      flex: 1;
-      min-height: 52vh;
-      width: 100%;
-      z-index: 1;
-    }
-
+    #map { flex: 1; min-height: 52vh; width: 100%; z-index: 1; }
     .legend {
       background: var(--white);
       padding: 1rem 1rem 0.8rem;
       border-top: 4px solid var(--blue);
     }
-
     .legend h2 {
       font-family: 'Fredoka One', cursive;
       font-size: 1.15rem;
       color: var(--blue);
       margin-bottom: 0.7rem;
     }
-
     .standort-list {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 0.55rem;
     }
-
     .standort-card {
       display: flex;
       align-items: flex-start;
       gap: 0.65rem;
       border-radius: 14px;
-      padding: 0.65rem 0.8rem;
+      padding: 0.6rem 0.8rem;
       cursor: pointer;
       transition: transform 0.18s, box-shadow 0.18s;
       border: 2.5px solid transparent;
     }
-    .standort-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-    }
-
+    .standort-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
     .standort-card:nth-child(6n+1) { background: #fdecea; border-color: var(--red);    }
     .standort-card:nth-child(6n+2) { background: #e8eef9; border-color: var(--blue);   }
     .standort-card:nth-child(6n+3) { background: #fef3e2; border-color: var(--orange); }
     .standort-card:nth-child(6n+4) { background: #e6f4ed; border-color: var(--green);  }
     .standort-card:nth-child(6n+5) { background: #fdf6e3; border-color: var(--yellow); }
     .standort-card:nth-child(6n+6) { background: #fce8ef; border-color: var(--pink);   }
-
     .standort-num {
       min-width: 28px; width: 28px; height: 28px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-family: 'Fredoka One', cursive;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: white;
       flex-shrink: 0;
     }
@@ -156,19 +151,8 @@
     .standort-card:nth-child(6n+4) .standort-num { background: var(--green);  }
     .standort-card:nth-child(6n+5) .standort-num { background: var(--yellow); color: var(--dark); }
     .standort-card:nth-child(6n+6) .standort-num { background: var(--pink);   }
-
-    .standort-info strong {
-      display: block;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--dark);
-    }
-    .standort-info small {
-      font-size: 0.75rem;
-      color: #666;
-      line-height: 1.4;
-    }
-
+    .standort-info strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--dark); }
+    .standort-info small  { font-size: 0.75rem; color: #666; line-height: 1.4; }
     footer {
       background: var(--white);
       text-align: center;
@@ -176,33 +160,16 @@
       font-size: 0.72rem;
       color: #aaa;
       border-top: 4px solid transparent;
-      border-image: linear-gradient(90deg,
-        var(--orange), var(--red), var(--pink),
-        var(--blue), var(--green), var(--yellow)) 1;
+      border-image: linear-gradient(90deg, var(--orange), var(--red), var(--pink), var(--blue), var(--green), var(--yellow)) 1;
     }
-
     .leaflet-popup-content-wrapper {
       border-radius: 14px;
       border-top: 5px solid var(--red);
       font-family: 'Nunito', sans-serif;
     }
     .leaflet-popup-content { margin: 12px 14px; }
-    .popup-title {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1rem;
-      color: var(--blue);
-    }
-    .popup-addr {
-      font-size: 0.8rem;
-      color: #888;
-      margin-top: 2px;
-    }
-    .popup-desc {
-      font-size: 0.83rem;
-      margin-top: 5px;
-      color: var(--dark);
-      font-weight: 600;
-    }
+    .popup-title { font-family: 'Fredoka One', cursive; font-size: 1rem; color: var(--blue); }
+    .popup-addr  { font-size: 0.8rem; color: #888; margin-top: 2px; }
   </style>
 </head>
 <body>
@@ -217,6 +184,11 @@
   <div class="organizer">Ev. Kindergarten Gänseblümchen</div>
 </header>
 
+<div id="loading-bar">
+  <p>📍 Standorte werden geladen...</p>
+  <div class="progress-outer"><div class="progress-inner" id="progress"></div></div>
+</div>
+
 <div id="map"></div>
 
 <div class="legend">
@@ -224,120 +196,153 @@
   <div class="standort-list" id="standort-list"></div>
 </div>
 
-<footer>Karte: © <a href="https://www.openstreetmap.org/copyright" style="color:#aaa">OpenStreetMap</a>-Mitwirkende, © <a href="https://carto.com" style="color:#aaa">CARTO</a> &nbsp;|&nbsp; Ev. Kindergarten Gänseblümchen</footer>
+<footer>Karte: © <a href="https://www.openstreetmap.org/copyright" style="color:#aaa">OpenStreetMap</a>-Mitwirkende &nbsp;|&nbsp; Ev. Kindergarten Gänseblümchen</footer>
 
 <script>
   // ============================================================
-  // STANDORTE HIER EINTRAGEN ODER BEARBEITEN
+  // STANDORTE
   // ============================================================
-  const standorte = [
-    {
-      name: "Familie Müller",
-      adresse: "Hauptstraße 12, Hilsbach",
-      beschreibung: "Kindersachen, Spielzeug, Bücher",
-      lat: 49.1961,
-      lng: 8.8601
-    },
-    {
-      name: "Hof Wagner",
-      adresse: "Gartenweg 5, Hilsbach",
-      beschreibung: "Haushaltswaren, Werkzeug, Gartenartikel",
-      lat: 49.1940,
-      lng: 8.8575
-    },
-    {
-      name: "Familie Schneider",
-      adresse: "Am Weinberg 3, Hilsbach",
-      beschreibung: "Kleidung (alle Größen), Accessoires",
-      lat: 49.1930,
-      lng: 8.8620
-    },
-    {
-      name: "Bauernhof Becker",
-      adresse: "Dorfstraße 8, Weiler",
-      beschreibung: "Möbel, Dekoartikel, Antiquitäten",
-      lat: 49.2105,
-      lng: 8.8780
-    },
-    {
-      name: "Familie Hoffmann",
-      adresse: "Kirchgasse 2, Weiler",
-      beschreibung: "Sportartikel, Fahrräder, Outdoor",
-      lat: 49.2082,
-      lng: 8.8755
-    },
-    {
-      name: "Hof Zimmermann",
-      adresse: "Lindenstraße 17, Weiler",
-      beschreibung: "Elektrogeräte, Heimwerker, Diverses",
-      lat: 49.2118,
-      lng: 8.8800
-    }
+  const adressen = [
+    "Schafgasse 16, Sinsheim",
+    "Kornblumenstraße 6, Sinsheim",
+    "Reihenerstr. 10, Sinsheim",
+    "Beckenwiesenweg 16, Sinsheim",
+    "Reihener Str. 3a, Sinsheim",
+    "Holunderweg 6, Sinsheim",
+    "Unter der Kelter, Sinsheim",
+    "Waldangellocherstr. 1a, Sinsheim",
+    "Kaiserstr. 41, Sinsheim",
+    "Kaiserstr. 56, Sinsheim",
+    "Von Öttingenstr. 45, Sinsheim",
+    "Kaiserstraße 60, Sinsheim",
+    "Kornblumenstr. 8, Sinsheim",
+    "Am Schafgarten 7, Sinsheim",
+    "Enzianstr. 4, Sinsheim",
+    "Ginsterstr. 9, Sinsheim",
+    "Fürstenstr. 7, Sinsheim",
+    "Unter der Kelter 6, Sinsheim",
+    "Spervogelstr. 3, Sinsheim",
+    "Kaiserstr. 16, Sinsheim",
+    "Burggrafenstr. 17, Sinsheim",
+    "Weinbergstrasse 5, Sinsheim",
+    "Elsbeereweg 10, Sinsheim",
+    "Rohräckerstr. 18, Sinsheim",
+    "Salzbachweg, Sinsheim",
+    "Waldangellocher Str. 1, Sinsheim",
+    "Grötzenstr. 7, Sinsheim",
+    "Von Venningen Str. 10, Sinsheim",
+    "Elsbeereweg 20, Sinsheim",
+    "Beckenwiesenweg 9, Sinsheim",
+    "Rohräckerstr. 26, Sinsheim",
+    "Enzianstr. 2a, Sinsheim",
+    "Schafgasse 11, Sinsheim",
+    "Kaiserstr. 90, Sinsheim",
+    "Enzianstr. 3, Sinsheim",
+    "Fürstenstr. 4, Sinsheim",
+    "Von-Venningen-Straße 19, Sinsheim",
+    "Grötzenstr. 1, Sinsheim",
+    "Fliederstr. 2, Sinsheim",
+    "Kornblumenstr. 4, Sinsheim",
+    "Elsbeereweg 3, Sinsheim",
+    "Elsbeereweg 6, Sinsheim",
+    "Steinstr. 5, Sinsheim",
+    "Hälde 7, Sinsheim",
+    "Burggrafenstr. 12, Sinsheim",
+    "Kaiserstr. 54, Sinsheim"
   ];
   // ============================================================
 
   const colours = ['#d63b2f','#5b7ec5','#e8813a','#4a9b6f','#f0c040','#e07090'];
 
   const map = L.map('map').setView([49.202, 8.869], 14);
-
-  // CartoDB Positron tiles - kein Referer-Problem
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende',
     maxZoom: 19
   }).addTo(map);
 
-  const listEl = document.getElementById('standort-list');
+  const listEl   = document.getElementById('standort-list');
+  const progress = document.getElementById('progress');
+  const loadBar  = document.getElementById('loading-bar');
+  const markers  = [];
+  let loaded = 0;
 
-  standorte.forEach((s, i) => {
-    const num = i + 1;
-    const col = colours[i % colours.length];
-    const textCol = col === '#f0c040' ? '#2a2a2a' : 'white';
+  function updateProgress() {
+    loaded++;
+    progress.style.width = (loaded / adressen.length * 100) + '%';
+    if (loaded === adressen.length) {
+      setTimeout(() => { loadBar.style.display = 'none'; }, 600);
+      if (markers.length > 0) {
+        const group = L.featureGroup(markers);
+        map.fitBounds(group.getBounds().pad(0.15));
+      }
+    }
+  }
 
-    const icon = L.divIcon({
-      className: '',
-      html: `<div style="
-          background:${col};
-          border:3px solid white;
-          border-radius:50% 50% 50% 0;
-          transform:rotate(-45deg);
-          width:34px;height:34px;
-          box-shadow:0 3px 10px rgba(0,0,0,0.28);
-          display:flex;align-items:center;justify-content:center;">
-          <span style="
-            transform:rotate(45deg);
-            color:${textCol};
-            font-family:'Fredoka One',cursive;
-            font-size:14px;
-            line-height:1;">${num}</span>
-        </div>`,
-      iconSize: [34, 34],
-      iconAnchor: [17, 34],
-      popupAnchor: [0, -36]
-    });
+  async function geocode(adresse) {
+    const q = encodeURIComponent(adresse);
+    const url = `https://nominatim.openstreetmap.org/search?q=${q}&format=json&limit=1&countrycodes=de`;
+    const r = await fetch(url, { headers: { 'Accept-Language': 'de' } });
+    const data = await r.json();
+    return data.length > 0 ? { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) } : null;
+  }
 
-    const marker = L.marker([s.lat, s.lng], { icon }).addTo(map);
-    marker.bindPopup(`
-      <div class="popup-title">${num}. ${s.name}</div>
-      <div class="popup-addr">📍 ${s.adresse}</div>
-      <div class="popup-desc">🛍 ${s.beschreibung}</div>
-    `);
+  async function ladeStandorte() {
+    for (let i = 0; i < adressen.length; i++) {
+      const adresse = adressen[i];
+      const num = i + 1;
+      const col = colours[i % colours.length];
+      const textCol = col === '#f0c040' ? '#2a2a2a' : 'white';
 
-    const card = document.createElement('div');
-    card.className = 'standort-card';
-    card.innerHTML = `
-      <div class="standort-num">${num}</div>
-      <div class="standort-info">
-        <strong>${s.name}</strong>
-        <small>${s.adresse}<br>${s.beschreibung}</small>
-      </div>
-    `;
-    card.addEventListener('click', () => {
-      map.setView([s.lat, s.lng], 17);
-      marker.openPopup();
-    });
-    listEl.appendChild(card);
-  });
+      // Karte-Eintrag sofort anzeigen
+      const card = document.createElement('div');
+      card.className = 'standort-card';
+      card.innerHTML = `
+        <div class="standort-num">${num}</div>
+        <div class="standort-info">
+          <strong>Standort ${num}</strong>
+          <small>${adresse.replace(', Sinsheim','')}</small>
+        </div>`;
+      listEl.appendChild(card);
+
+      try {
+        const coords = await geocode(adresse);
+        if (coords) {
+          const icon = L.divIcon({
+            className: '',
+            html: `<div style="background:${col};border:3px solid white;border-radius:50% 50% 50% 0;
+                transform:rotate(-45deg);width:34px;height:34px;
+                box-shadow:0 3px 10px rgba(0,0,0,0.28);
+                display:flex;align-items:center;justify-content:center;">
+                <span style="transform:rotate(45deg);color:${textCol};
+                font-family:'Fredoka One',cursive;font-size:13px;line-height:1;">${num}</span>
+              </div>`,
+            iconSize: [34, 34],
+            iconAnchor: [17, 34],
+            popupAnchor: [0, -36]
+          });
+          const marker = L.marker([coords.lat, coords.lng], { icon }).addTo(map);
+          marker.bindPopup(`
+            <div class="popup-title">Standort ${num}</div>
+            <div class="popup-addr">📍 ${adresse.replace(', Sinsheim','')}</div>`);
+          markers.push(marker);
+          card.addEventListener('click', () => {
+            map.setView([coords.lat, coords.lng], 17);
+            marker.openPopup();
+          });
+        } else {
+          card.style.opacity = '0.5';
+          card.title = 'Adresse konnte nicht gefunden werden';
+        }
+      } catch(e) {
+        card.style.opacity = '0.5';
+      }
+
+      updateProgress();
+      await new Promise(r => setTimeout(r, 1100)); // Nominatim fair-use: max 1 req/sec
+    }
+  }
+
+  ladeStandorte();
 </script>
 </body>
 </html>
