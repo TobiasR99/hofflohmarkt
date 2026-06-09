@@ -7,7 +7,6 @@ const standorte = [
   { adresse: "Am Schafgarten 7",        lat: 49.2093017, lng: 8.879023  },
   { adresse: "Beckenwiesenweg 9",       lat: 49.2069678, lng: 8.8789685 },
   { adresse: "Beckenwiesenweg 16",      lat: 49.2059745, lng: 8.8786874 },
-  { adresse: "Burggrafenstr. 12",       lat: 49.209318,  lng: 8.877961  },
   { adresse: "Burggrafenstr. 17",       lat: 49.2095322, lng: 8.8781344 },
   { adresse: "Elsbeereweg 3",           lat: 49.2053434, lng: 8.8769788 },
   { adresse: "Elsbeereweg 6",           lat: 49.2049925, lng: 8.876976  },
@@ -30,13 +29,13 @@ const standorte = [
   { adresse: "Kaiserstr. 56",           lat: 49.2115144, lng: 8.8746708 },
   { adresse: "Kaiserstr. 60",           lat: 49.211542,  lng: 8.874228  },
   { adresse: "Kaiserstr. 90",           lat: 49.213443,  lng: 8.873164  },
-  { adresse: "Kornblumenstr. 4",        lat: 49.205321,  lng: 8.874242  },
   { adresse: "Kornblumenstr. 6",        lat: 49.2051153, lng: 8.8740034 },
   { adresse: "Kornblumenstr. 8",        lat: 49.2050017, lng: 8.8737974 },
   { adresse: "Reihener Str. 3a",        lat: 49.208314,  lng: 8.876564  },
   { adresse: "Reihenerstr. 10",         lat: 49.207789,  lng: 8.876910  },
   { adresse: "Rohräckerstr. 18",        lat: 49.2060727, lng: 8.8773155 },
   { adresse: "Rohräckerstr. 26",        lat: 49.206428,  lng: 8.878638  },
+  { adresse: "Schafgasse 9",            lat: 49.210403,  lng: 8.877388  },
   { adresse: "Schafgasse 11",           lat: 49.2104134, lng: 8.8777988 },
   { adresse: "Schafgasse 16",           lat: 49.2103024, lng: 8.8782227 },
   { adresse: "Spervogelstr. 3",         lat: 49.2147378, lng: 8.8723755 },
@@ -47,7 +46,8 @@ const standorte = [
   { adresse: "Von-Venningen-Str. 19",   lat: 49.2038861, lng: 8.8743773 },
   { adresse: "Waldangellocher Str. 1",  lat: 49.208943,  lng: 8.875295  },
   { adresse: "Waldangellocher Str. 1a", lat: 49.208815,  lng: 8.874941  },
-  { adresse: "Weinbergstrasse 5",       lat: 49.2104763, lng: 8.879157  }
+  { adresse: "Weinbergstr. 5",          lat: 49.2104763, lng: 8.879157  },
+  { adresse: "Weinbergstr. 8a",         lat: 49.21085,   lng: 8.87988   }
 ];
 
 const parkplaetze = [
