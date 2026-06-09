@@ -7,6 +7,7 @@ const standorte = [
   { adresse: "Am Schafgarten 7",        lat: 49.2093017, lng: 8.879023  },
   { adresse: "Beckenwiesenweg 9",       lat: 49.2069678, lng: 8.8789685 },
   { adresse: "Beckenwiesenweg 16",      lat: 49.2059745, lng: 8.8786874 },
+  { adresse: "Burggrafenstr. 12",       lat: 49.209357,  lng: 8.877980  },
   { adresse: "Burggrafenstr. 17",       lat: 49.2095322, lng: 8.8781344 },
   { adresse: "Elsbeereweg 3",           lat: 49.2053434, lng: 8.8769788 },
   { adresse: "Elsbeereweg 6",           lat: 49.2049925, lng: 8.876976  },
