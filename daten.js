@@ -41,7 +41,6 @@ const standorte = [
   { adresse: "Schafgasse 16",           lat: 49.2103024, lng: 8.8782227 },
   { adresse: "Spervogelstr. 3",         lat: 49.2147378, lng: 8.8723755 },
   { adresse: "Unter der Kelter 6",      lat: 49.210534,  lng: 8.879634  },
-  { adresse: "Unter der Kelter 8a",     lat: 49.210284,  lng: 8.879972  },
   { adresse: "Von Öttingen-Str. 45",    lat: 49.2040678, lng: 8.8752566 },
   { adresse: "Von-Venningen-Str. 10",   lat: 49.2049091, lng: 8.8750602 },
   { adresse: "Von-Venningen-Str. 19",   lat: 49.2038861, lng: 8.8743773 },
