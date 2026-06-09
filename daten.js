@@ -46,7 +46,7 @@ const standorte = [
   { adresse: "Von-Venningen-Str. 10",   lat: 49.2049091, lng: 8.8750602 },
   { adresse: "Von-Venningen-Str. 19",   lat: 49.2038861, lng: 8.8743773 },
   { adresse: "Waldangellocher Str. 1",  lat: 49.208943,  lng: 8.875295  },
-  { adresse: "Waldangellocherstr. 1a",  lat: 49.208815,  lng: 8.874941  },
+  { adresse: "Waldangellocher Str. 1a", lat: 49.208815,  lng: 8.874941  },
   { adresse: "Weinbergstrasse 5",       lat: 49.2104763, lng: 8.879157  }
 ];
 
