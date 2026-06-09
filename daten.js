@@ -32,7 +32,7 @@ const standorte = [
   { adresse: "Kornblumenstr. 6",        lat: 49.2051153, lng: 8.8740034 },
   { adresse: "Kornblumenstr. 8",        lat: 49.2050017, lng: 8.8737974 },
   { adresse: "Reihener Str. 3a",        lat: 49.208314,  lng: 8.876564  },
-  { adresse: "Reihenerstr. 10",         lat: 49.207789,  lng: 8.876910  },
+  { adresse: "Reihener Str. 10",        lat: 49.207789,  lng: 8.876910  },
   { adresse: "Rohräckerstr. 18",        lat: 49.2060727, lng: 8.8773155 },
   { adresse: "Rohräckerstr. 26",        lat: 49.206428,  lng: 8.878638  },
   { adresse: "Schafgasse 9",            lat: 49.210403,  lng: 8.877388  },
