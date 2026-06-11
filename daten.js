@@ -47,7 +47,9 @@ const standorte = [
   { adresse: "Waldangellocher Str. 1",  lat: 49.208943,  lng: 8.875295  },
   { adresse: "Waldangellocher Str. 1a", lat: 49.208815,  lng: 8.874941  },
   { adresse: "Weinbergstr. 5",          lat: 49.2104763, lng: 8.879157  },
-  { adresse: "Weinbergstr. 8a",         lat: 49.21085,   lng: 8.87988   }
+  { adresse: "Weinbergstr. 8a",         lat: 49.21085,   lng: 8.87988   },
+  { adresse: "Weinbergstr. 15a",        lat: 49.211580,  lng: 8.877814  }
+
 ];
 
 const parkplaetze = [
